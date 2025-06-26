@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Doclab</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #searchResults {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h4 class="headline-md" style="margin: 2rem 0; color: black;">Doctor Search Results</h4>
+        <div id="searchResults"></div>
+        <div id="loading" style="display: none;"></div>
+        <div id="error" style="color: red; display: none;"></div>
+    </main>
+
+    <script src="../assets/js/doctors-data.js"></script>
+    <script>
+        window.onload = async function() {
+            const params = new URLSearchParams(window.location.search);
+            const location = params.get('location');
+            
+            if (!location) {
+                window.location.href = '/';
+                return;
+            }
+
+            await searchDoctors(location);
+        };
+
+        async function searchDoctors(location) {
+            const loadingDiv = document.getElementById('loading');
+            const errorDiv = document.getElementById('error');
+            
+            try {
+                const normalizedLocation = location.trim().toLowerCase();
+                console.log('Searching for location:', normalizedLocation);
+
+                loadingDiv.style.display = 'block';
+                loadingDiv.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="display: inline-block; border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
+                        <p style="margin-top: 10px;">Searching for doctors in ${location}...</p>
+                    </div>
+                `;
+                errorDiv.style.display = 'none';
+
+                // Filter doctors based on location
+                const filteredDoctors = doctorsData.filter(doctor => 
+                    doctor.city.toLowerCase() === normalizedLocation
+                );
+
+                // Simulate network delay
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                if (filteredDoctors.length === 0) {
+                    errorDiv.innerHTML = `
+                        <div style="text-align: center; padding: 20px;">
+                            <p>No doctors found in ${location}.</p>
+                            <p>Try searching for a different location or check your spelling.</p>
+                            <button onclick="window.location.href='/'" class="btn has-before" style="margin-top: 10px;">
+                                Try New Search
+                            </button>
+                        </div>
+                    `;
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+
+                displayResults(filteredDoctors);
+
+            } catch (error) {
+                console.error('Search error:', error);
+                errorDiv.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <p>Error: ${error.message}</p>
+                        <p>Please try searching again.</p>
+                        <button onclick="searchDoctors('${location}')" class="btn has-before" style="margin: 10px;">
+                            Retry Search
+                        </button>
+                    </div>
+                `;
+                errorDiv.style.display = 'block';
+            } finally {
+                loadingDiv.style.display = 'none';
+            }
+        }
+
+        function displayResults(doctors) {
+            const resultsDiv = document.getElementById('searchResults');
+            if (!doctors || doctors.length === 0) {
+                return;
+            }
+
+            const html = doctors.map(doctor => `
+                <div class="doctor-card" style="width: 35%; margin-bottom: 1.5rem; padding: 2rem; border: 1px solid #ddd; border-radius: 8px; gap: 1rem; display: flex; flex-direction: column; background-color: #f9f9f9;">
+                    <h2>${doctor.name}</h2>
+                    <p>Specialization: ${doctor.specialization}</p>
+                    <p>Experience: ${doctor.experience} years</p>
+                    <p>Hospital: ${doctor.hospital || 'Not specified'}</p>
+                    <p>Address: ${doctor.address}</p>
+                    <p>Rating: ${doctor.rating}/5</p>
+                    <button onclick="bookAppointment(${doctor.id})" class="btn has-before" style="margin-top: 1rem;">Book Appointment</button>
+                </div>
+            `).join('');
+
+            resultsDiv.innerHTML = html;
+        }
+
+        function bookAppointment(doctorId) {
+            // Redirect to appointment booking page with doctor ID
+            window.location.href = `/create-appointment?doctorId=${doctorId}`;
+        }
+    </script>
+</body>
+</html>

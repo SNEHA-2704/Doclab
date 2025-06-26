@@ -1,1 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- primary meta tags -->
+  <title>Doclab - home</title>
+  <meta name="title" content="Doclab - home">
+  <meta name="description" content="This is a madical html template made by codewithsadee">
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+
+  <!-- google font link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Rubik:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- custom css link -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- preload images -->
+  <link rel="preload" as="image" href="../assets/images/hero-banner.png">
+  <link rel="preload" as="image" href="../assets/images/hero-bg.png">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #PRELOADER
+  -->
+  <div class="preloader" data-preloader>
+    <div class="circle"></div>
+  </div>
+
+  <!-- 
+    - #HEADER
+  -->
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="../assets/images/logo.svg" width="136" height="46" alt="Doclab home">
+      </a>
+      <nav class="navbar" data-navbar>
+        <div class="navbar-top">
+          <a href="#" class="logo">
+            <img src="../assets/images/logo.svg" width="136" height="46" alt="Doclab home">
+          </a>
+
+          <button class="nav-close-btn" aria-label="clsoe menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="/" class="navbar-link title-md">Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="/doctor" class="navbar-link title-md">Doctors</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="/services" class="navbar-link title-md">Services</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="/blog" class="navbar-link title-md">Blog</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="/contact" class="navbar-link title-md">Contact</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="/create-appointment" class="navbar-link appointment-link title-md">Make Appointment</a>
+          </li>
+          <li class="navbar-item">
+            <a href="/login" class="navbar-link login-link title-md">Login</a>
+          </li>
+
+        </ul>
+
+        <ul class="social-list">
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-pinterest"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <a href="/create-appointment" class="btn appointment-link has-before title-md" id="makeAppointmentBtn">Make Appointment</a>
+      <a href="/login" class="btn login-link has-before title-md">Login</a>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+      <section class="section hero" style="background-image: url('./assets/images/hero-bg.png')" aria-label="home">
+        <div class="container">
+          <div class="hero-content">
+            <p class="hero-subtitle has-before" data-reveal="left">Welcome To Doclab</p>
+            <h1 class="headline-lg hero-title" data-reveal="left">
+              Find Nearest <br>
+              Doctor.
+            </h1>
+            <form class="hero-card" data-reveal="left" onsubmit="handleSearch(event)">
+              <p class="title-lg card-text">
+                Search doctors. clinics. hospitals. etc.
+              </p>
+
+              <div class="wrapper">
+                <div class="input-wrapper title-lg">
+                  <select class="input-field" id="locationSelect" name="location" required>
+                    <option value="">Select the locations</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Mumbai">Mumbai</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="btn has-before">
+                  <ion-icon name="search"></ion-icon>
+                  <span class="span title-md">Find Now</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <figure class="hero-banner" data-reveal="right">
+            <img src="../assets/images/hero-banner.png" width="590" height="517" loading="eager" alt="hero banner"
+              class="w-100">
+          </figure>
+        </div>
+      </section>
+
+      <!-- #SERVICE -->
+      <section class="service" aria-label="service">
+        <div class="container">
+          <ul class="service-list">
+
+            <li>
+                <div class="service-card" data-reveal="bottom">
+                    <div class="card-icon">
+                        <img src="../assets/images/icon-1.png" width="71" height="71" loading="lazy" alt="Psychiatry">
+                    </div>
+                    <h3 class="headline-sm card-title">
+                        <a href="#">Psychiatry</a>
+                    </h3>
+                    <p class="card-text">Mental health support, and emotional well-being treatments.</p>
+                    <button class="btn-circle" aria-label="read more about Psychiatry">
+                        <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </li>
+        
+            <li>
+                <div class="service-card" data-reveal="bottom">
+                    <div class="card-icon">
+                        <img src="../assets/images/icon-2.png" width="71" height="71" loading="lazy" alt="Gynecology">
+                    </div>
+                    <h3 class="headline-sm card-title">
+                        <a href="#">Gynecology</a>
+                    </h3>
+                    <p class="card-text">Comprehensive care for women's reproductive health and wellness.</p>
+                    <button class="btn-circle" aria-label="read more about Gynecology">
+                        <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </li>
+        
+            <li>
+                <div class="service-card" data-reveal="bottom">
+                    <div class="card-icon">
+                        <img src="../assets/images/icon-3.png" width="71" height="71" loading="lazy" alt="Pulmonology">
+                    </div>
+                    <h3 class="headline-sm card-title">
+                        <a href="#">Pulmonology</a>
+                    </h3>
+                    <p class="card-text">Specialized treatment for lung diseases, and respiratory care.</p>
+                    <button class="btn-circle" aria-label="read more about Pulmonology">
+                        <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </li>
+        
+            <li>
+                <div class="service-card" data-reveal="bottom">
+                    <div class="card-icon">
+                        <img src="../assets/images/icon-4.png" width="71" height="71" loading="lazy" alt="Orthopedics">
+                    </div>
+                    <h3 class="headline-sm card-title">
+                        <a href="#">Orthopedics</a>
+                    </h3>
+                    <p class="card-text">Expert care for bone, joint, and musculoskeletal conditions.</p>
+                    <button class="btn-circle" aria-label="read more about Orthopedics">
+                        <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </li>
+        
+          </ul>
+        
+        </div>
+      </section>
+
+      <!-- 
+        - #ABOUT
+      -->
+      <section class="section about" aria-labelledby="about-label">
+        <div class="container">
+
+          <div class="about-content">
+
+            <p class="section-subtitle title-lg has-after" id="about-label" data-reveal="left">About Us</p>
+        
+            <h2 class="headline-md" data-reveal="left">Committed to Excellence in Healthcare</h2>
+        
+            <p class="section-text" data-reveal="left">
+                At DocLab, we take pride in providing top-quality healthcare services with a team of experienced medical professionals. 
+                Our goal is to ensure personalized, compassionate, and advanced medical care for all.
+            </p>
+        
+            <div class="wrapper">
+                <ul class="about-list">
+                    <li class="about-item" data-reveal="left">
+                        <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        <span class="span">Highly qualified and experienced doctors</span>
+                    </li>
+        
+                    <li class="about-item" data-reveal="left">
+                        <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        <span class="span">State-of-the-art medical technology</span>
+                    </li>
+        
+                    <li class="about-item" data-reveal="left">
+                        <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        <span class="span">Comprehensive and patient-focused treatment plans</span>
+                    </li>
+        
+                    <li class="about-item" data-reveal="left">
+                        <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        <span class="span">Commitment to continuous innovation in healthcare</span>
+                    </li>
+                </ul>
+            </div>
+        
+          </div>
+        
+
+          <figure class="about-banner" data-reveal="right">
+            <img src="../assets/images/about-banner.png" width="554" height="678" loading="lazy" alt="about banner"
+              class="w-100">
+          </figure>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #LISTING
+      -->
+      <section class="section listing" aria-labelledby="listing-label">
+        <div class="container">
+
+          <ul class="grid-list">
+
+            <li>
+                <p class="section-subtitle title-lg" id="listing-label" data-reveal="left">Services</p>
+                <h2 class="headline-md" data-reveal="left">Expert Care Tailored to Your Health Needs</h2>
+            </li>
+        
+            <li>
+                <div class="listing-card" data-reveal="bottom">
+                    <div class="card-icon">
+                        <img src="../assets/images/icon-1.png" width="71" height="71" loading="lazy" alt="Psychiatry">
+                    </div>
+                    <div>
+                        <h3 class="headline-sm card-title">Psychiatry</h3>
+                        <p class="card-text">Comprehensive mental health care, including therapy, medication management, and emotional wellness support.</p>
+                    </div>
+                </div>
+            </li>
+        
+            <li>
+                <div class="listing-card" data-reveal="bottom">
+                    <div class="card-icon">
+                        <img src="../assets/images/icon-2.png" width="71" height="71" loading="lazy" alt="Gynecology">
+                    </div>
+                    <div>
+                        <h3 class="headline-sm card-title">Gynecology</h3>
+                        <p class="card-text">Expert care for women's health, including prenatal care, reproductive health, and hormonal treatments.</p>
+                    </div>
+                </div>
+            </li>
+        
+            <li>
+                <div class="listing-card" data-reveal="bottom">
+                    <div class="card-icon">
+                        <img src="../assets/images/icon-4.png" width="71" height="71" loading="lazy" alt="Pulmonology">
+                    </div>
+                    <div>
+                        <h3 class="headline-sm card-title">Pulmonology</h3>
+                        <p class="card-text">Specialized treatment for lung conditions, including asthma, COPD, and respiratory infections.</p>
+                    </div>
+                </div>
+            </li>
+        
+            <li>
+                <div class="listing-card" data-reveal="bottom">
+                    <div class="card-icon">
+                        <img src="../assets/images/icon-5.png" width="71" height="71" loading="lazy" alt="Orthopedics">
+                    </div>
+                    <div>
+                        <h3 class="headline-sm card-title">Orthopedics</h3>
+                        <p class="card-text">Advanced care for bone, joint, and muscle conditions, including fractures and arthritis treatment.</p>
+                    </div>
+                </div>
+            </li>
+        
+            <li>
+                <div class="listing-card" data-reveal="bottom">
+                    <div class="card-icon">
+                        <img src="../assets/images/icon-6.png" width="71" height="71" loading="lazy" alt="Pediatrics">
+                    </div>
+                    <div>
+                        <h3 class="headline-sm card-title">Pediatrics</h3>
+                        <p class="card-text">Comprehensive medical care for children, including vaccinations, growth monitoring, and illness management.</p>
+                    </div>
+                </div>
+            </li>
+        
+          </ul>
+        
+
+        </div>
+      </section>
+
+      <!-- 
+        - #BLOG
+      -->
+      <section class="section blog" aria-labelledby="blog-label">
+        <div class="container">
+    
+            <p class="section-subtitle title-lg text-center" id="blog-label" data-reveal="bottom">
+                Healthcare Insights & Articles
+            </p>
+    
+            <h2 class="section-title headline-md text-center" data-reveal="bottom">Stay Informed with Our Latest News</h2>
+    
+            <ul class="grid-list">
+    
+                <li>
+                    <div class="blog-card has-before has-after" data-reveal="bottom">
+                        <div class="meta-wrapper">
+                            <div class="card-meta">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <span class="span">By Dr. Sarah Mitchell</span>
+                            </div>
+                            <div class="card-meta">
+                                <ion-icon name="folder-outline"></ion-icon>
+                                <span class="span">Oncology</span>
+                            </div>
+                        </div>
+                        <h3 class="headline-sm card-title">Intermittent Fasting: Can It Lower Cancer Risk?</h3>
+                        <time class="title-sm date" datetime="2024-03-05">March 5, 2024</time>
+                        <p class="card-text">
+                            Recent studies explore how intermittent fasting may help reduce inflammation, and lower the risk of certain cancers, including breast cancer.
+                        </p>
+                        <a href="#" class="btn-text title-lg">Read More</a>
+                    </div>
+                </li>
+    
+                <li>
+                    <div class="blog-card has-before has-after" data-reveal="bottom">
+                        <div class="meta-wrapper">
+                            <div class="card-meta">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <span class="span">By Dr. Emily Carter</span>
+                            </div>
+                            <div class="card-meta">
+                                <ion-icon name="folder-outline"></ion-icon>
+                                <span class="span">Pediatrics</span>
+                            </div>
+                        </div>
+                        <h3 class="headline-sm card-title">How to Support Your Child’s Mental Health</h3>
+                        <time class="title-sm date" datetime="2024-02-20">February 20, 2024</time>
+                        <p class="card-text">
+                            With rising concerns about children's mental health, experts recommend strategies to encourage 
+                            independence while ensuring emotional well-being during uncertain times.
+                        </p>
+                        <a href="#" class="btn-text title-lg">Read More</a>
+                    </div>
+                </li>
+    
+                <li>
+                    <div class="blog-card has-before has-after" data-reveal="bottom">
+                        <div class="meta-wrapper">
+                            <div class="card-meta">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <span class="span">By Dr. Michael Thompson</span>
+                            </div>
+                            <div class="card-meta">
+                                <ion-icon name="folder-outline"></ion-icon>
+                                <span class="span">Gastroenterology</span>
+                            </div>
+                        </div>
+                        <h3 class="headline-sm card-title">The Hidden Dangers of Binge Eating and Drinking</h3>
+                        <time class="title-sm date" datetime="2024-01-10">January 10, 2024</time>
+                        <p class="card-text">
+                            Overeating and excessive alcohol consumption can lead to long-term liver damage. Learn about 
+                            early warning signs and effective ways to maintain digestive health.
+                        </p>
+                        <a href="#" class="btn-text title-lg">Read More</a>
+                    </div>
+                </li>
+    
+            </ul>
+    
+        </div>
+      </section>
+    
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+  <footer class="footer" style="background-image: url('./assets/images/footer-bg.png')">
+    <div class="container">
+
+      <div class="section footer-top">
+
+        <div class="footer-brand" data-reveal="bottom">
+
+          <a href="#" class="logo">
+            <img src="../assets/images/logo.svg" width="136" height="46" loading="lazy" alt="Doclab home">
+          </a>
+
+          <ul class="contact-list has-after">
+
+            <li class="contact-item">
+
+              <div class="item-icon">
+                <ion-icon name="mail-open-outline"></ion-icon>
+              </div>
+
+              <div>
+                <p>
+                  Main Email : <a href="mailto:contact@website.com" class="contact-link">contact@&shy;website.com</a>
+                </p>
+
+                <p>
+                  Inquiries : <a href="mailto:Info@mail.com" class="contact-link">Info@mail.com</a>
+                </p>
+              </div>
+
+            </li>
+
+            <li class="contact-item">
+
+              <div class="item-icon">
+                <ion-icon name="call-outline"></ion-icon>
+              </div>
+
+              <div>
+                <p>
+                  Office Telephone : <a href="tel:001122334455" class="contact-link">001122334455</a>
+                </p>
+
+                <p>
+                  Mobile : <a href="tel:98765 43210" class="contact-link">98765 43210</a>
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="footer-list" data-reveal="bottom">
+
+          <p class="headline-sm footer-list-title">About Us</p>
+
+          <p class="text">
+            Delivering expert healthcare services with compassion, innovation, and excellence.
+          </p>
+
+          <address class="address">
+            <ion-icon name="map-outline"></ion-icon>
+
+            <span class="text">
+              2416 Mapleview Drive <br>
+              Tampa, FL 33634
+            </span>
+          </address>
+
+        </div>
+
+        <ul class="footer-list" data-reveal="bottom">
+
+          <li>
+            <p class="headline-sm footer-list-title">Services</p>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Conditions</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Listing</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">How It Works</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">What We Offer</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Latest News</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Contact Us</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list" data-reveal="bottom">
+
+          <li>
+            <p class="headline-sm footer-list-title">Useful Links</p>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Conditions</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Terms of Use</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Our Services</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">Join as a Doctor</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">New Guests List</a>
+          </li>
+
+          <li>
+            <a href="#" class="text footer-link">The Team List</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <p class="text copyright">
+          &copy; Doclab 2022 | All Rights Reserved by codewithsadee
+        </p>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-google"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-pinterest"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="chevron-up"></ion-icon>
+  </a>
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="../assets/js/script.js"></script>
+
+  <!-- Add this script before the closing body tag -->
+  <script>
+    function handleSearch(event) {
+        event.preventDefault();
+        const location = document.getElementById('locationSelect').value;
+        if (!location) {
+            alert('Please select a location');
+            return;
+        }
+        window.location.href = `/search-results.html?location=${encodeURIComponent(location)}`;
+    }
+  </script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
